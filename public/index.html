@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html ng-app="weatherLoggingApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Weather logging App</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:20px; }
+		#logs-cal 				{ padding-left:50px; }
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="core.js"></script>
+
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+
+		<div class="page-header text-center">
+			<h2>Weather logging Application</h2>
+		</div>
+
+		<div class="input-section">
+			<h5><b>Temperature</b></h5>
+			<form name="myForm" class="form-inline">
+			<input type="number" name="temp" placeholder="Enter temperature" ng-model="formData.text" ng-required="true">
+		    <button type="submit" class="btn btn-success" ng-click=" myForm.$valid && addTemp()" >Add Temperature</button>
+
+			<p>* The input field is required</p><br>
+
+		</form>
+		</div>
+
+		<div>
+        <table class="table table-striped">
+            <tr>
+                <td> Average : {{getAverage(logs)}}°c</td>
+                <td> Highest : {{getHighest(logs)}}°c</td>
+                <td> Lowest : {{getLowest(logs)}}°c</td>
+                <td> Median : {{getMedian(logs)}}°c</td>
+            </tr>
+        </table>
+		</div>
+        <div >
+
+			<br><h5><b>Temperature Log:</b></h5>
+
+			<tr class="col-sm-4 col-sm-offset-4">
+
+				<table class="table">
+                    <tr>
+                        <th>Day</th>
+                        <th>Temperature</th>
+                        <th>Delete</th>
+                    </tr>
+				<tr ng-repeat="log in logs">
+					<td>{{ log.day }} </td>
+                    <td>{{log.temp }}°c</td>
+                    <td> <button type="submit" class="btn btn-danger" ng-click="deleteLog(log._id)">Delete</button></td>
+
+                    </td>
+				</tr>
+                </table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
