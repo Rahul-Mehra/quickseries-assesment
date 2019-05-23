@@ -38,6 +38,9 @@ function mainController($scope, $http) {
 		var total = 0;
 		var count = 0;
 		var logLength = logs.length;
+		if(logLength<1){
+			return "";
+		}
         for(var i=0;i<logLength;i++){
             total += logs[i].temp;
             count++;
@@ -53,7 +56,11 @@ function mainController($scope, $http) {
 				high = logs[i].temp;
 			}
 		}
-		return high;
+		if(high==0){
+			return "";
+		}else {
+			return high;
+		}
 	}
 
 	$scope.getLowest = function(logs) {
@@ -68,12 +75,19 @@ function mainController($scope, $http) {
 				low = logs[i].temp;
 			}
 		}
-		return low;
+		if(low==0){
+			return "";
+		}else {
+			return low;
+		}
 	}
 
 	$scope.getMedian = function(logs) {
 		var low = 0;
 		var logLength = logs.length;
+		if(logLength<1){
+			return "";
+		}
 		var even = false;
 		var temps = [];
 		if(logLength%2==0){
