@@ -11,6 +11,7 @@ A Node app built with MongoDB and Angular allowing user to enter weather logs.No
 ## Installation
 
 1. Clone the repository
+2. Make sure mongodb server is running on local system.
 2. Install mongodb: `npm install mongodb --save`
 3. Install the application: `npm install`
 4. Start the server: `node server.js`
